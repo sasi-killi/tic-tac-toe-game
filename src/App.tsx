@@ -1,6 +1,6 @@
 import Game from "./components/Game";
 import "./App.css";
-import { Button, useColorMode } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 function App() {
