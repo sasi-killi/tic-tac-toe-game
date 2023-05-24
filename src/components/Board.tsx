@@ -23,7 +23,7 @@ function Board({ boxSize, squareData, handleClick }: Props) {
             border={"1px"}
             onClick={() => handleClick(index)}
           >
-            <GridItem>
+            <GridItem fontSize={"1.5em"}>
               <Square>{square}</Square>
             </GridItem>
           </Center>

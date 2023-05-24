@@ -3,7 +3,7 @@ interface Props {
 }
 
 function Square({ children }: Props) {
-  return <h1>{children}</h1>;
+  return <p>{children}</p>;
 }
 
 export default Square;
