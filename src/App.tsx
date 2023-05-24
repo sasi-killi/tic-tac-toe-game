@@ -1,6 +1,6 @@
 import Game from "./components/Game";
 import "./App.css";
-import { useColorMode } from "@chakra-ui/react";
+import { Center, useColorMode } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 function App() {
@@ -12,7 +12,9 @@ function App() {
 
   return (
     <div>
-      <Game />
+      <Center height={"100vh"}>
+        <Game />
+      </Center>
     </div>
   );
 }

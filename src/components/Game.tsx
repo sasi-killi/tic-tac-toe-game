@@ -37,21 +37,23 @@ function Game() {
 
   if (!boxSize) {
     return (
-      <Center height={"100vh"} width={"100vw"}>
+      <Center height={"100vh"} width={"fit-content"}>
         <BoardSize setBoxSize={setBoxSize} />
       </Center>
     );
   }
 
   return (
-    <Center height={"100vh"} width={"100vw"}>
+    <Center height={"100vh"} width={"fit-content"}>
       <Box>
         <TurnDecider winner={winner} isXNext={isXNext} />
-        <Board
-          boxSize={boxSize}
-          handleClick={handleClick}
-          squareData={squareData}
-        />
+        <Center width="100%">
+          <Board
+            boxSize={boxSize}
+            handleClick={handleClick}
+            squareData={squareData}
+          />
+        </Center>
       </Box>
     </Center>
   );
