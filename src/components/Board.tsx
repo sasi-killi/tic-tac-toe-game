@@ -18,12 +18,12 @@ function Board({ boxSize, squareData, handleClick }: Props) {
         return (
           <Center
             key={index}
-            height={20}
-            width={20}
+            height={{ base: 9, md: 12, lg: 16 }}
+            width={{ base: 9, md: 12, lg: 16 }}
             border={"1px"}
             onClick={() => handleClick(index)}
           >
-            <GridItem fontSize={"1.5em"}>
+            <GridItem fontSize={{ base: "1.25em", md: "1.37em", lg: "1.5em" }}>
               <Square>{square}</Square>
             </GridItem>
           </Center>
