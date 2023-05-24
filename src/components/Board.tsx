@@ -13,6 +13,8 @@ function Board({ boxSize, squareData, handleClick }: Props) {
       templateColumns={`repeat(${boxSize}, 1fr)`}
       templateRows={`repeat(${boxSize}, 1fr)`}
       border={"1px"}
+      height={"fit-content"}
+      width={"fit-content"}
     >
       {squareData.map((square, index) => {
         return (

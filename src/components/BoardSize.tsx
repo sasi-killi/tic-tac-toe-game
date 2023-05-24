@@ -44,7 +44,12 @@ function BoardSize({ setBoxSize }: Props) {
         Start Game
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "xs", md: "sm", lg: "lg" }}
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Board Size</ModalHeader>
