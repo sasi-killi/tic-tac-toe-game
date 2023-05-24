@@ -1,7 +1,8 @@
-import Board from "./components/Board";
+import Game from "./components/Game";
+import "./App.css";
 
 function App() {
-  return <Board boxSize={4} />;
+  return <Game />;
 }
 
 export default App;

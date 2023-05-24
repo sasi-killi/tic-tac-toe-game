@@ -1,9 +1,9 @@
 interface Props {
-  letter: string;
+  children: string;
 }
 
-function Square({ letter }: Props) {
-  return <h1>{letter}</h1>;
+function Square({ children }: Props) {
+  return <h1>{children}</h1>;
 }
 
 export default Square;
