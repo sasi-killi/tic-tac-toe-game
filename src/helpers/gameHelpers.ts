@@ -1,30 +1,36 @@
 function getWinArrays(boxSize: number) {
-  const arr = [];
-  let count = 0;
+  const arr: number[][] = [];
+
   const returNum = (boxSize: number, step: number, count: number = 0) => {
-    const arr = [];
+    const subArr: number[] = [];
     for (let i = 0; i < boxSize - 1; i++) {
-      boxSize !== 0 ? arr.push((count += step)) : arr.push((count += step));
+      subArr.push((count += step));
     }
-    return arr;
+    return subArr;
   };
+
+  let count = 0;
+
   for (let i = 0; i < boxSize; i++) {
     arr.push([count, ...returNum(boxSize, 1, count)]);
     count += boxSize;
   }
+
   count = 0;
+
   for (let i = 0; i < boxSize; i++) {
     arr.push([count, ...returNum(boxSize, boxSize, count)]);
     count++;
   }
+
   count = 0;
-  for (let i = 0; i < 1; i++) {
-    arr.push([count, ...returNum(boxSize, boxSize + 1)]);
-  }
+
+  arr.push([count, ...returNum(boxSize, boxSize + 1)]);
+
   count = boxSize - 1;
-  for (let i = 0; i < 1; i++) {
-    arr.push([count, ...returNum(boxSize, boxSize - 1, count)]);
-  }
+
+  arr.push([count, ...returNum(boxSize, boxSize - 1, count)]);
+
   return arr;
 }
 
@@ -34,18 +40,17 @@ function calculateWinner(
   letterArray: string[],
   isXNext: boolean
 ) {
-  let isWinner;
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].includes(index)) {
-      isWinner = lines[i].every((value) => {
-        return value === index
-          ? true
-          : letterArray[value] === (isXNext ? "X" : "O");
-      });
+      const isWinner = lines[i].every((value) =>
+        value === index ? true : letterArray[value] === (isXNext ? "X" : "O")
+      );
+      if (isWinner) {
+        return isWinner;
+      }
     }
-    if (isWinner) return isWinner;
   }
-  return isWinner;
+  return false;
 }
 
 function getInitialLetterState(boxSize: number) {

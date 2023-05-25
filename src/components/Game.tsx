@@ -5,7 +5,7 @@ import {
   getWinArrays,
 } from "../helpers/gameHelpers";
 import Board from "./Board";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Button, Center } from "@chakra-ui/react";
 import TurnDecider from "./TurnDecider";
 import BoardSize from "./BoardSize";
 
@@ -14,6 +14,7 @@ function Game() {
   const [isXNext, setXNext] = useState(true);
   const [squareData, setSquareData] = useState(getInitialLetterState(boxSize));
   const [winner, setWinner] = useState("");
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     setSquareData(getInitialLetterState(boxSize));
@@ -33,6 +34,16 @@ function Game() {
     const isWinner = calculateWinner(winLines, index, squareData, isXNext);
 
     if (isWinner) setWinner(isXNext ? "X" : "O");
+
+    setCount(count + 1);
+  };
+
+  const isGameOver = count === boxSize ** 2;
+
+  const handleReset = () => {
+    setXNext(true);
+    setSquareData(getInitialLetterState(boxSize));
+    setCount(0);
   };
 
   if (!boxSize) {
@@ -46,7 +57,11 @@ function Game() {
   return (
     <Center height={"100vh"} width={"fit-content"}>
       <Box>
-        <TurnDecider winner={winner} isXNext={isXNext} />
+        <TurnDecider
+          winner={winner}
+          isXNext={isXNext}
+          isGameOver={isGameOver}
+        />
         <Center width="100%">
           <Board
             boxSize={boxSize}
@@ -54,6 +69,13 @@ function Game() {
             squareData={squareData}
           />
         </Center>
+        {isGameOver && (
+          <Center>
+            <Button colorScheme="blue" marginTop={8} onClick={handleReset}>
+              Reset
+            </Button>
+          </Center>
+        )}
       </Box>
     </Center>
   );
